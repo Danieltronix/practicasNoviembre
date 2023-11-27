@@ -1,0 +1,55 @@
+CREATE DATABASE 	archivoXLS;
+SHOW DATABASES;
+USE archivoXLS;
+CREATE TABLE inventario (
+id int NOT NULL AUTO_INCREMENT,
+num_inventario varchar(30) NOT NULL,
+descripcion varchar(250),
+marca int NOT NULL,
+fecha_registro date,
+precio float NOT NULL,
+num_factura int NOT NULL,
+proveedor varchar(50) NOT NULL,
+num_serie varchar(250) NOT NULL,
+ubicacion int NOT NULL,
+primary key(id),
+foreign key(marca) references cat_marca(id),
+foreign key(ubicacion) references cat_ubicacion(id)
+);
+CREATE TABLE cat_marca (
+id int NOT NULL AUTO_INCREMENT,
+marca varchar(30) NOT NULL,
+primary key(id)
+);
+CREATE TABLE cat_ubicacion (
+id int NOT NULL AUTO_INCREMENT,
+ubicacion varchar(200) NOT NULL,
+primary key(id)
+);
+-- ______________________________________
+INSERT INTO cat_marca (marca)
+values
+    ('HP'),
+    ('Compaq'),
+    ('Asus');
+   -- _______________________________ 
+    INSERT INTO cat_ubicacion (ubicacion)
+values
+    ('EL GRULLO'),
+    ('COLOTLAN');
+    -- _________________________________
+    INSERT INTO inventario (num_inventario, descripcion, marca, fecha_registro, precio, num_factura, proveedor, num_serie, ubicacion)
+values
+    ('IITEJ-15206-469', 'COMPUTADORA WORKSTATION MARCA HP MODELO XW4600T', 1, '2009-01-22', 15482.34, 16664, 'COMPUTACION INTERACTIVA DE OCCIDENTE', '2UA84801F2 MONITOR 3CQ841408J, MOUSE HP: p/n: 265986-007 C/T: F5320B0N3WG05EG, TECLADO Mod: KU-0316 P/N:434821-161 LAS CT: BC3720FVBWN0JS', 1),
+    ('IITEJ-15206-472', 'COMPUTADORA WORKSTATION MARCA HP MODELO XW4600T', 2, '2009-01-22', 15482.34, 16664, 'COMPUTACION INTERACTIVA DE OCCIDENTE', '2UA84801GQ MONITOR 3CQ841408Q', 2),
+    ('IITEJ-15206-474', 'IMPRESORA LASER JET MODELO P1505', 3, '2009-01-08', 2080.61, 16602, 'COMPUTACION INTERACTIVA DE OCCIDENTE', 'VNB3B07852', 1),
+    ('IITEJ-15206-477', 'IMPRESORA LASER JET MODELO P1505', 3, '2009-01-08', 2080.61, 16602, 'COMPUTACION INTERACTIVA DE OCCIDENTE', 'VNB3J11533', 2),
+    ('IITEJ-15206-479', 'CAMARA DIGITAL MODELO DSC-S730', 2, '2009-01-08', 1822.30, 16602, 'COMPUTACION INTERACTIVA DE OCCIDENTE', 'S01-2144523-7', 1),
+    ('IITEJ-15206-482', 'CAMARA DIGITAL MODELO DSC-S730', 1, '2009-01-08', 1822.30, 16602, 'COMPUTACION INTERACTIVA DE OCCIDENTE', 'S01-2144524-8', 2);
+    
+    
+    
+   --  SELECT * FROM cat_marca;
+    -- DELETE FROM cat_marca WHERE id >= 4;
+   --  SELECT * FROM cat_marca;
+    
